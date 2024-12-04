@@ -25,16 +25,7 @@ const userSchema = new mongoose.Schema(
       unique: true,
     },
 
-    name: {
-        type: String,
-        required: [true, REQUIRED_FIELD],
-        unique: false,
-    },
-    lastname: {
-        type: String,
-        required: [true, REQUIRED_FIELD],
-        unique: false,
-    },
+  
     phone: {
       type: String,
       required: [true, REQUIRED_FIELD]
@@ -44,10 +35,9 @@ const userSchema = new mongoose.Schema(
     timestamps: true
   }
 )
-const User = mongoose.model('User', userSchema);
-// Evento que se produce antes de guardar un usuario en la BBDD
 userSchema.pre("save", function (next) {
   const user = this;
+  console.log('HASSSSSSH')
   // Antes de guardar, compruebo si tengo que hashear la contraseña, si su campo ha sido modificado o es nuevo
   if (user.isModified("password")) {
     bcrypt.hash(user.password, ROUNDS).then((hash) => {
@@ -61,4 +51,5 @@ userSchema.pre("save", function (next) {
 userSchema.methods.checkPassword = function (password) {
   return bcrypt.compare(password, this.password);
 };
-module.exports = User   
+const User = mongoose.model('User', userSchema);
+module.exports = User
