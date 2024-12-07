@@ -28,3 +28,8 @@ module.exports.doLogin = (req, res, next) => {
       next(err)
     })
 }
+module.exports.logout = (req, res, next) => {
+  req.session.destroy()
+  res.clearCookie("express-cookie");
+  res.redirect('/login')
+}
