@@ -19,5 +19,9 @@ router.post('/register', upload.single('image'), usersController.doCreate)
 router.get('/login', authController.login)
 router.post('/login', authController.doLogin)
 router.get('/logout', authController.logout)
+
+//users
+
+router.get('/profile', usersController.getUserProfile)
 // Products
 module.exports = router
