@@ -5,6 +5,7 @@ require('./config/hbs.config')
 const express = require('express')
 const logger = require('morgan')
 const path = require('path')
+const { sessionConfig, getCurrentUser } = require('./config/session.config')
 const app = express()
 // To have access to `body` property in the request
 app.use(express.urlencoded({ extended: false }));
@@ -15,6 +16,9 @@ app.set("view engine", "hbs");
 // Handles access to the public folder
 app.use(express.static(path.join(__dirname, "public")));
 app.use(logger('dev'))
+
+app.use(sessionConfig);
+app.use(getCurrentUser);
 const routes = require('./routes/routes')
 app.use('/', routes)
 // Manejo de errores

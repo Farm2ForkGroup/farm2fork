@@ -20,6 +20,7 @@ module.exports.doLogin = (req, res, next) => {
           if (!match) {
             return renderWithErrors()
           }
+          req.session.userId = user.id; // genero cookie y session
           res.redirect('/')
         })
     })
