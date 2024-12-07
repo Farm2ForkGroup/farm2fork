@@ -1,5 +1,6 @@
+
 <h1>Crear cuenta</h1>
-<form action="/register" method="post">
+<form action="/register" method="post" enctype="multipart/form-data">
   <div class="mb-3">
     <label for="email" class="form-label">Email</label>
     <input type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" name="email" value="{{values.email}}" required>
@@ -28,5 +29,15 @@
       {{errors.phone}}
     </div>
   </div>
+
+  <div class="mb-3">
+    <label for="image" class="form-label">Profile image</label>
+    <input class="form-control {{#if errors.image}}is-invalid{{/if}}" type="file" id="image" name="image">
+    <div class="invalid-feedback">
+      {{errors.image}}
+    </div>
+  </div>
   <button class="btn btn-primary" type="submit">Create account</button>
 </form>
+
+

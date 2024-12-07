@@ -2,39 +2,45 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const EMAIL_PATTERN =
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+const URL_PATTERN = /^(https?:\/\/)?([a-zA-Z0-9\-]+\.)+[a-zA-Z]{2,}(:\d+)?(\/[^\s]*)?$/
 const ROUNDS = 10
-const REQUIRED_FIELD = 'Required field'
+const REQUIRED_FIELD = 'Campo requerido'
 const userSchema = new mongoose.Schema(
   {
     email: {
       type: String,
       required: [true, REQUIRED_FIELD],
       unique: true,
-      match: [EMAIL_PATTERN, 'Email is invalid'],
+      match: [EMAIL_PATTERN, 'Email incorrecto'],
       trim: true,
       lowercase: true,
     },
     password: {
       type: String,
-      required: true,
-      minLength: [8, "Password must be 8 characters or longer"],
+      required: [true, REQUIRED_FIELD],
+      minLength: [8, "La contraseña debe tener 8 o más caracteres"],
     },
     username: {
       type: String,
       required: [true, REQUIRED_FIELD],
       unique: true,
     },
-
-  
     phone: {
       type: String,
       required: [true, REQUIRED_FIELD]
     },
+    image: {
+      type: String,
+      required: [true, REQUIRED_FIELD],
+      match: [URL_PATTERN, 'La imagen debe ser una URL válida']
+    }
   },
   {
     timestamps: true
   }
 )
+// Evento que se produce antes de guardar un usuario en la BBDD
+// IMPORTANTE: Tiene que ir antes del mongoose.model() sino, no lo utiliza
 userSchema.pre("save", function (next) {
   const user = this;
   console.log('HASSSSSSH')
