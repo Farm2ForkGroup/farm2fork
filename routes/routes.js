@@ -5,6 +5,7 @@ const upload = require('../config/multer.config')
 const miscController = require('../controllers/misc.controller')
 const usersController = require('../controllers/users.controller')
 const authController = require('../controllers/auth.controller')
+const productsController = require('../controllers/products.controller')
 // Middlewares
 const { isAuthenticated, isNotAuthenticated } = require('../middlewares/auth.middleware')
 // Misc urls
@@ -19,4 +20,7 @@ router.get('/logout', isAuthenticated, authController.logout)
 // Users
 router.get('/profile', isAuthenticated, usersController.getUserProfile)
 // Products
+router.get('/products/new', isAuthenticated, productsController.create) // Importante: tiene que ir antes de la de detail, porque es mas especifica, sino entraria en la de detail antes
+router.get('/products', isAuthenticated, productsController.list)
+router.get('/products/:id', isAuthenticated, productsController.getDetail)
 module.exports = router 

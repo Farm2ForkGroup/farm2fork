@@ -1,5 +1,5 @@
-const { default: mongoose } = require('mongoose')
 const moongose = require('mongoose')
+const CATEGORIES = require('../data/categories')
 const REQUIRED_FIELD = 'Campo requerido'
 const productSchema = new mongoose.Schema(
   {
@@ -23,98 +23,7 @@ const productSchema = new mongoose.Schema(
     images: {
       type: [String],
       required: [true, REQUIRED_FIELD],
-    }
-,
-   
-
-    category: {
-        type: String,
-        required: [true, 'Category is required'],
-        enum: [
-          {
-            category: 'Fruits',
-            subcategories: [
-              'Oranges',
-              'Lemons',
-              'Cherries',
-              'Figs',
-              'Pomegranates',
-              'Grapes'
-            ],
-          },
-          {
-            category: 'Vegetables',
-            subcategories: [
-              'Leafy greens',
-              'Root vegetables',
-              'Cruciferous',
-              'Peppers',
-              'Tomatoes',
-              'Artichokes'
-            ],
-          },
-          {
-            category: 'Meat',
-            subcategories: [
-              'Beef',
-              'Pork',
-              'Chicken',
-              'Lamb',
-              'Turkey',
-              'Rabbit'
-            ],
-          },
-          {
-            category: 'Dairy',
-            subcategories: [
-              'Cheese',
-              'Milk',
-              'Yogurt',
-              'Butter',
-              'Custards'
-            ],
-          },
-          {
-            category: 'Olive oil',
-            subcategories: [
-              'Arbequina',
-              'Picual',
-              'Hojiblanca',
-              'Cornicabra',
-              'Blended oils'
-            ],
-          },
-          {
-            category: 'Wines',
-            subcategories: [
-              'Red',
-              'White',
-              'Rosé',
-              'Sparkling',
-              'Sherry',
-              'Dessert wines'
-            ],
-          },
-          {
-            category: 'Cereals',
-            subcategories: [
-              'Rice',
-              'Wheat',
-              'Barley',
-              'Oats',
-              'Maize'
-            ],
-          },
-          {
-            category: 'Tubers',
-            subcategories: [
-              'Potatoes',
-              'Sweet potatoes',
-              'Cassava'
-            ],
-          },
-        ],
-      },
+    },
     
     unit: {
         type: String,
@@ -122,6 +31,11 @@ const productSchema = new mongoose.Schema(
         enum: ['Kilograms', 'Liters', 'Units', 'Others'],
         default: 'Units'
     },
+
+    categories : {
+      type: [string],
+      enum: [CATEGORIES],
+    }
       
   },
   {
