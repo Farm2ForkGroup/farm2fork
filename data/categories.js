@@ -1,5 +1,5 @@
 module.exports = [
-    [
+    
         {
           category: 'Fruits',
           subcategories: [
@@ -82,6 +82,5 @@ module.exports = [
             'Cassava'
           ],
         },
-      ],
+      ]
     
-]

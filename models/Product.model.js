@@ -1,6 +1,9 @@
-const moongose = require('mongoose')
+const mongoose = require('mongoose')
 const CATEGORIES = require('../data/categories')
 const REQUIRED_FIELD = 'Campo requerido'
+
+
+console.log(CATEGORIES)
 const productSchema = new mongoose.Schema(
   {
     name: {
@@ -32,10 +35,17 @@ const productSchema = new mongoose.Schema(
         default: 'Units'
     },
 
-    categories : {
-      type: [string],
-      enum: [CATEGORIES],
-    }
+    categories: [{
+      category: {
+        type: String,
+        enum: CATEGORIES, // Apply enum validation here
+        required: true
+      },
+      subcategories: {
+        type: [String], // Array of strings for subcategories
+        default: [] // Optional: provide a default value
+      }
+    }]
       
   },
   {

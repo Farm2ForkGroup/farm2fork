@@ -1,1 +1,112 @@
-<h1>Create your Listing</h1>
+<h1>Create Your New Listing</h1>
+<form action="/products" method="post" enctype="multipart/form-data">
+  <div class="row">
+    <!-- Title -->
+    <div class="mb-3 col-12 col-md-6">
+      <label for="title" class="form-label">Listing Title</label>
+      <input
+        type="text"
+        class="form-control {{#if errors.name}}is-invalid{{/if}}"
+        id="title"
+        name="name"
+        value="{{values.name}}"
+        required
+      >
+      <div class="invalid-feedback">{{errors.name}}</div>
+    </div>
+    <!-- Price -->
+    <div class="mb-3 col-12 col-md-6">
+      <label for="price" class="form-label">Price (€)</label>
+      <input
+        type="number"
+        min="1"
+        step="0.01"
+        class="form-control {{#if errors.price}}is-invalid{{/if}}"
+        id="price"
+        name="price"
+        value="{{values.price}}"
+        required
+      >
+      <div class="invalid-feedback">{{errors.price}}</div>
+    </div>
+    <!-- Category -->
+    <div class="mb-3 col-12 col-md-6">
+      <label for="category" class="form-label">Category</label>
+      <select
+        class="form-select {{#if errors.category}}is-invalid{{/if}}"
+        id="category"
+        name="category"
+        required
+      >
+        <option disabled selected>Select a category</option>
+        {{#each categories as |categoryObj|}}
+          <option value="{{categoryObj.category}}">{{categoryObj.category}}</option>
+        {{/each}}
+      </select>
+      <div class="invalid-feedback">{{errors.category}}</div>
+    </div>
+    <!-- Subcategories -->
+    <div class="mb-3 col-12 col-md-6">
+      <label for="subcategories" class="form-label">Subcategories</label>
+      <select
+        class="form-select {{#if errors.subcategories}}is-invalid{{/if}}"
+        id="subcategories"
+        name="subcategories"
+        multiple
+        disabled
+      >
+        <option disabled selected>Select a category first</option>
+      </select>
+      <div class="invalid-feedback">{{errors.subcategories}}</div>
+    </div>
+    <!-- Unit -->
+    <div class="mb-3 col-12 col-md-6">
+      <label for="unit" class="form-label">Unit</label>
+      <select
+        class="form-select {{#if errors.unit}}is-invalid{{/if}}"
+        id="unit"
+        name="unit"
+        required
+      >
+        <option disabled selected>Select a unit</option>
+        <option value="Kilograms">Kilograms</option>
+        <option value="Liters">Liters</option>
+        <option value="Units">Units</option>
+        <option value="Others">Others</option>
+      </select>
+      <div class="invalid-feedback">{{errors.unit}}</div>
+    </div>
+    <!-- Description -->
+    <div class="mb-3 col-12">
+      <label for="description" class="form-label">Description</label>
+      <textarea
+        rows="6"
+        class="form-control {{#if errors.description}}is-invalid{{/if}}"
+        id="description"
+        name="description"
+      >{{values.description}}</textarea>
+      <div class="invalid-feedback">{{errors.description}}</div>
+    </div>
+    <!-- Images -->
+    <div class="mb-3 col-12">
+      <label for="images" class="form-label">Images</label>
+      <input
+        type="file"
+        class="form-control {{#if errors.images}}is-invalid{{/if}}"
+        id="images"
+        name="images"
+        multiple
+        required
+      >
+      <div class="invalid-feedback">{{errors.images}}</div>
+    </div>
+  </div>
+  <button class="btn btn-primary">Create Listing</button>
+</form>
+
+
+
+
+
+
+
