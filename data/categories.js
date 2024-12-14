@@ -78,8 +78,8 @@ module.exports = [
           category: 'Tubers',
           subcategories: [
             'Potatoes',
-            'Sweet potatoes',
-            'Cassava'
+            'Beet',
+            'Carrot'
           ],
         },
       ]

@@ -105,18 +105,16 @@
   <button class="btn btn-primary">Create Listing</button>
 </form>
 <script>
+  // Función para actualizar las subcategorías
   function updateSubcategories() {
     const categorySelect = document.getElementById('category');
     const subcategorySelect = document.getElementById('subcategories');
-    // Get the selected option
     const selectedOption = categorySelect.options[categorySelect.selectedIndex];
-    // Enable the subcategories dropdown
+
     subcategorySelect.disabled = false;
-    // Clear previous options
     subcategorySelect.innerHTML = '<option disabled selected>Select a subcategory</option>';
-    // Get subcategories from the data attribute
+
     const subcategories = selectedOption.getAttribute('data-subcategories');
-    // Populate subcategories if they exist
     if (subcategories) {
       const subcategoriesArray = subcategories.split(',');
       subcategoriesArray.forEach((subcategory) => {
@@ -127,11 +125,33 @@
       });
     }
   }
+
+  // Validar el número máximo de archivos seleccionados
   function validateFileCount(input) {
-    const maxFiles = 2; // Limit of 2 images
+    const maxFiles = 2; // Límite de 2 imágenes
     if (input.files.length > maxFiles) {
       alert(`You can upload up to ${maxFiles} images only.`);
-      input.value = ''; // Clear the file input if the limit is exceeded
+      input.value = ''; // Limpiar la entrada si se excede el límite
     }
   }
+
+  // Validar formulario al enviar
+  document.querySelector('form').addEventListener('submit', function (event) {
+    const descriptionInput = document.getElementById('description');
+    const imagesInput = document.getElementById('images');
+
+    // Validar si la descripción está vacía
+    if (descriptionInput.value.trim() === '') {
+      alert('Please provide a description for the product.');
+      event.preventDefault(); // Evitar envío del formulario
+      return;
+    }
+
+    // Validar si hay más de 2 archivos seleccionados
+    if (imagesInput.files.length > 2) {
+      alert('You can upload up to 2 images only.');
+      event.preventDefault(); // Evitar envío del formulario
+      return;
+    }
+  });
 </script>

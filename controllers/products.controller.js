@@ -7,6 +7,7 @@ module.exports.list = (req, res, next) => {
 module.exports.getDetail = (req, res, next) => {
   const { id } = req.params
   Product.findById(id)
+    .populate('owner')
     .then(product => {
       if (!product) {
         return next({ status: 404, message: 'Product not found' })
