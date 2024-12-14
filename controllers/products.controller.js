@@ -20,40 +20,24 @@ module.exports.create = (req, res, next) => {
   res.render('products/form', { categories: CATEGORIES })
 }
 module.exports.doCreate = (req, res, next) => {
-
   req.body.owner = req.currentUser.id
-  
-  req.body.categories = [
-    {
-      category: req.body.category,
-      subcategories: req.body.subcategories
-    }
-  ]
- 
-  console.log( req.body)
   if (req.files) {
-    console.log('hay files?', req.files)
     req.body.images = req.files.map(file => file.path)
   }
-
   Product.create(req.body)
     .then((productCreated) => {
-       console.log('redirijo? ->', `/products/${productCreated.id}`)
       res.redirect(`/products/${productCreated.id}`)
     })
     .catch(err => {
       if (err instanceof mongoose.Error.ValidationError) {
-        console.log('VALIDATION ERROR', err)
        next(err )
       } else {
-        console.log('SERVER ERROR', err)
         next(err)
       }
     })
 }
-
-
-
-
-
-
+module.exports.delete = (req, res, next) => {
+  Product.findByIdAndDelete(req.params.id)
+    .then(() => res.redirect('/products'))
+    .catch(err => next(err))
+}

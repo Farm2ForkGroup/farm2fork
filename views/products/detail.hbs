@@ -3,9 +3,16 @@
     <div class="bg-light rounded overflow-hidden">
       <img id="current-image" class="img-fluid" src="{{product.images.[0]}}" />
     </div>
+    <!-- Updated: Added 'role="button"' and 'pointer' class -->
     <div class="d-flex my-2 gap-3">
       {{#each product.images as |image|}}
-        <img class="product-image" src="{{image}}" alt="" height="50">
+        <img role="button" class="product-image pointer" src="{{image}}" alt="" height="50">
+      {{/each}}
+    </div>
+    <!-- Updated: Added d-flex gap-2 and category partial -->
+    <div class="d-flex gap-2">
+      {{#each product.categories}}
+        {{> category this}}
       {{/each}}
     </div>
     <h1>{{product.name}}</h1>
@@ -25,10 +32,11 @@
   <div class="col-12 col-md-5">
     <div class="bg-secondary-subtle w-100 p-4 rounded">
       <p>Listing of</p>
-      <div class="d-flex gap-2 my-2">
+      <!-- Updated: Added 'a' tag with href -->
+      <a class="d-flex gap-2 my-2" href="/users/{{product.owner.id}}">
         <img class="rounded-circle" src="{{product.owner.image}}" height="30" />
         <p class="fw-bold">{{product.owner.username}}</p>
-      </div>
+      </a>
       <button class="btn btn-primary w-100">To buy</button>
     </div>
   </div>
