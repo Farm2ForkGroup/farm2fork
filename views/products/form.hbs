@@ -40,6 +40,7 @@
         required
       >
         <option disabled selected>Select a category</option>
+        {{categories}}
         {{#each categories as |categoryObj|}}
           <option value="{{categoryObj.category}}" data-subcategories="{{categoryObj.subcategories}}">{{categoryObj.category}}</option>
         {{/each}}

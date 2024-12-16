@@ -83,4 +83,50 @@ module.exports = [
           ],
         },
       ]
+
+      /* module.exports = [
+        {
+          label: 'Fruits',
+          value: 'fruits',
+          img: ''
+        },
+        {
+          label: 'Vegetables',
+          value: 'vegetables',
+          img: ''
+        },
+        {
+          label: 'Meat',
+          value: 'meat',
+          img: ''
+        },
+        {
+          label: 'Dairy',
+          value: 'dairy',
+          img: ''
+        },
+
+        {
+          label: 'Olive oil',
+          value: 'olive oil',
+          img: ''
+        },
+        {
+          label: 'Wines',
+          value: 'wines',
+          img: ''
+        },
+        {
+          label: 'Cereals',
+          value: 'cereals',
+          img: ''
+        },
+        {
+          label: 'Tubers',
+          value: 'tubers',
+          img: ''
+        },
+      ];
+
+      */
     

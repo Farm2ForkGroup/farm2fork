@@ -1,12 +1,19 @@
 // Hemos cambiado CATEGORIES POR categories, si no , no aparecía como definida en la línea 9
 
 const Product = require('../models/Product.model')
-const categories = require('../data/categories')
+const CATEGORIES = require('../data/categories')
 const mongoose = require('mongoose')
+
 module.exports.list = (req, res, next) => {
-  Product.find()
+
+  const { category } = req.query
+  const query = {}
+  if (category) {
+    query.categories = { $in: category }
+  }
+  Product.find(query)
   .then(products => {
-    res.render('products/list', { products, categories })
+    res.render('products/list', { products, categories: CATEGORIES})
   })
   .catch(err => next(err))
 }

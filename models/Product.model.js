@@ -36,7 +36,7 @@ const productSchema = new mongoose.Schema(
       {
         category: {
           type: String,
-          enum: categoryNames, // Use the array of category names for validation
+          enum: CATEGORIES.map(category => category.value), // Use the array of category names for validation
           required: [true, REQUIRED_FIELD],
         },
         subcategories: {
