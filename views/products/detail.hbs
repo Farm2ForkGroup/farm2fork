@@ -30,15 +30,19 @@
     {{/each}}
   </div>
   <div class="col-12 col-md-5">
-    <div class="bg-secondary-subtle w-100 p-4 rounded">
-      <p>Listing of</p>
-      <!-- Updated: Added 'a' tag with href -->
-      <a class="d-flex gap-2 my-2" href="/users/{{product.owner.id}}">
-        <img class="rounded-circle" src="{{product.owner.image}}" height="30" />
-        <p class="fw-bold">{{product.owner.username}}</p>
-      </a>
-      <button class="btn btn-primary w-100">To buy</button>
-    </div>
+  <div class="bg-secondary-subtle w-100 p-4 rounded">
+    <p>Listing of</p>
+    <a class="d-flex gap-2 my-2" href="/users/{{product.owner.id}}">
+      <img class="rounded-circle" src="{{product.owner.image}}" height="30" />
+      <p class="fw-bold">{{product.owner.username}}</p>
+    </a>
+    <form action="/cart/add" method="POST">
+      <input type="hidden" name="productId" value="{{product._id}}">
+      <button class="btn btn-primary w-100" type="submit">Add to Cart</button>
+    </form>
+  </div>
+</div>
+
   </div>
 </div>
 <script src="/js/product-detail.js"></script>

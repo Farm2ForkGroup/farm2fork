@@ -1,0 +1,33 @@
+<h1>Your Shopping Cart</h1>
+
+{{#if cart.products.length}}
+  <ul>
+    {{#each cart.products}}
+      <li>
+        <p>{{this.product.title}} - {{this.quantity}} x {{this.product.price}} €</p>
+        <form action="/cart/remove/{{this.product._id}}" method="POST">
+          <button type="submit">Remove</button>
+        </form>
+      </li>
+    {{/each}}
+  </ul>
+  <p>
+    {{#if cart.products.length}}
+  <ul>
+    {{#each cart.products}}
+      <li>
+        <p>{{this.product.name}} - {{this.quantity}} x {{this.product.price}} €</p>
+        <form action="/cart/remove/{{this.product._id}}" method="POST">
+          <button type="submit">Remove</button>
+        </form>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>Your cart is empty.</p>
+{{/if}}
+
+  </p>
+{{else}}
+  <p>Your cart is empty.</p>
+{{/if}}

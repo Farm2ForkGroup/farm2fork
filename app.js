@@ -7,6 +7,8 @@ const logger = require('morgan')
 const path = require('path')
 const { sessionConfig, getCurrentUser } = require('./config/session.config')
 const app = express()
+
+
 // To have access to `body` property in the request
 app.use(express.urlencoded({ extended: false }));
 // Normalizes the path to the views folder
@@ -19,7 +21,9 @@ app.use(logger('dev'))
 app.use(sessionConfig);
 app.use(getCurrentUser);
 const routes = require('./routes/routes')
+const cartRoutes = require('./routes/cart.routes');
 app.use('/', routes)
+app.use('/', cartRoutes);
 // Manejo de errores
 app.use((req, res, next) => {
   // this middleware runs whenever requested page is not available

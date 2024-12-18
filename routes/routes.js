@@ -27,3 +27,4 @@ router.get('/products', isAuthenticated, productsController.list)
 router.get('/products/:id', isAuthenticated, productsController.getDetail)
 router.get('/products/:id/delete', isAuthenticated, productsController.delete)
 module.exports = router 
+

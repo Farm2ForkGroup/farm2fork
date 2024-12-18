@@ -1,0 +1,67 @@
+body {
+    background-color: #FDFCF7; /* Fondo suave, blanco cálido */
+    font-family: 'Open Sans', sans-serif; /* Una fuente sencilla y profesional */
+    color: #4A734C; /* Texto principal en verde oscuro */
+  }
+  
+  .navbar {
+    background-color: #8EBF87 !important; /* Navbar con verde suave */
+  }
+  
+  .navbar-brand img {
+    filter: brightness(0.9); /* Ajusta si lo necesitas, por si el logo necesita contraste */
+  }
+  
+  .nav-link,
+  .navbar-toggler-icon {
+    color: #FDFCF7 !important; /* Links en un tono claro que contraste con el verde */
+  }
+  
+  .navbar-nav .nav-link:hover {
+    background-color: #4A734C;
+    color: #FDFCF7 !important;
+    border-radius: 4px;
+  }
+  
+  .btn-primary {
+    background-color: #4A734C;
+    border-color: #4A734C;
+  }
+  .btn-primary:hover {
+    background-color: #7F6A3B; /* Marrón oscuro para hover */
+    border-color: #7F6A3B;
+  }
+  
+  .card {
+    background-color: #CABEA2; /* Fondo de las cards en marrón claro */
+    border: none;
+    border-radius: 8px;
+  }
+  .card .card-title {
+    color: #4A734C;
+  }
+  .card .card-text {
+    color: #4A734C;
+  }
+  .card-img-top {
+    border-bottom: 4px solid #4A734C;
+  }
+  
+  .form-label {
+    color: #4A734C;
+  }
+  
+  .form-control:focus {
+    border-color: #4A734C;
+    box-shadow: 0 0 0 0.2rem rgba(74,115,76,0.25);
+  }
+  
+  .btn-danger {
+    background-color: #7F6A3B;
+    border-color: #7F6A3B;
+  }
+  .btn-danger:hover {
+    background-color: #4A734C;
+    border-color: #4A734C;
+  }
+  
