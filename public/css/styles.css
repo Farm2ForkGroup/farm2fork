@@ -1,26 +1,31 @@
 body {
     background-color: #FDFCF7; /* Fondo suave, blanco cálido */
     font-family: 'Open Sans', sans-serif; /* Una fuente sencilla y profesional */
-    color: #4A734C; /* Texto principal en verde oscuro */
+    color: #000000; /* Texto principal en verde oscuro */
   }
   
   .navbar {
-    background-color: #8EBF87 !important; /* Navbar con verde suave */
+    background-color: #467240 !important; /* Navbar con verde suave */
   }
   
   .navbar-brand img {
-    filter: brightness(0.9); /* Ajusta si lo necesitas, por si el logo necesita contraste */
+    filter: brightness(0.9);
   }
   
   .nav-link,
   .navbar-toggler-icon {
-    color: #FDFCF7 !important; /* Links en un tono claro que contraste con el verde */
+    color: #FDFCF7 !important; 
+  }
+
+  .nav-link-strong {
+    font-weight: 500; 
   }
   
   .navbar-nav .nav-link:hover {
     background-color: #4A734C;
     color: #FDFCF7 !important;
     border-radius: 4px;
+    
   }
   
   .btn-primary {
@@ -28,12 +33,12 @@ body {
     border-color: #4A734C;
   }
   .btn-primary:hover {
-    background-color: #7F6A3B; /* Marrón oscuro para hover */
+    background-color: #7F6A3B; 
     border-color: #7F6A3B;
   }
   
   .card {
-    background-color: #CABEA2; /* Fondo de las cards en marrón claro */
+    background-color: #CABEA2; 
     border: none;
     border-radius: 8px;
   }
@@ -64,4 +69,22 @@ body {
     background-color: #4A734C;
     border-color: #4A734C;
   }
+
+
+  .cart-table th {
+    background-color: #8EBF87;
+  }
+
+
+  body {
+    background-image: url('/imgs/background.png'); /* Ruta a la imagen */
+    background-size: cover; /* La imagen cubre todo el fondo */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-color: rgba(0, 0, 0, 0.5); /* Color de fondo semitransparente */
+    background-blend-mode: overlay; /* Combina la imagen y el color */
+    background-attachment: fixed;
+  }
+  
+
   

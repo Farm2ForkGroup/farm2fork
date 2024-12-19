@@ -12,4 +12,7 @@ router.post('/cart/add', isAuthenticated, cartController.addToCart);
 // Eliminar un producto del carrito
 router.post('/cart/remove/:productId', isAuthenticated, cartController.removeFromCart);
 
+// Ruta para checkout
+router.get('/checkout', isAuthenticated, cartController.checkout);
+
 module.exports = router;

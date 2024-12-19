@@ -10,7 +10,7 @@ const app = express()
 
 
 // To have access to `body` property in the request
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 // Normalizes the path to the views folder
 app.set("views", path.join(__dirname, "views"));
 // Sets the view engine to handlebars
@@ -24,6 +24,9 @@ const routes = require('./routes/routes')
 const cartRoutes = require('./routes/cart.routes');
 app.use('/', routes)
 app.use('/', cartRoutes);
+// Aquí rutas de pago:
+const paymentRoutes = require('./routes/payment.routes');
+app.use('/', paymentRoutes);
 // Manejo de errores
 app.use((req, res, next) => {
   // this middleware runs whenever requested page is not available
@@ -44,4 +47,16 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
+});
+
+const hbs = require('hbs'); // O handlebars si usas express-handlebars
+// Helper para multiplicar precio por cantidad
+hbs.registerHelper('multiply', function (price, quantity) {
+  return (price * quantity).toFixed(2);
+});
+// Helper para calcular el total
+hbs.registerHelper('calculateTotal', function (products) {
+  return products.reduce((total, item) => {
+    return total + item.product.price * item.quantity;
+  }, 0).toFixed(2);
 });

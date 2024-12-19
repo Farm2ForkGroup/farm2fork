@@ -3,14 +3,17 @@
 {{/if}}
 <div>
   <div class="text-center">
-    <div class="my-4 bg-secondary-subtle p-4 rounded">
-      <img class="rounded-circle" src="{{user.image}}" alt="User" height="60">
-      <h3>{{user.username}}</h3>
-      <h4>{{user.email}}</h4>
-      {{#if profile}}
-        <a href="/products/new" class="btn btn-primary">Create a new listing</a>
-      {{/if}}
-    </div>
+   <div class="card text-center shadow-lg" style="max-width: 400px; margin: 0 auto; border: none; background-color: #CABEA2;">
+  <div class="card-body">
+    <img class="rounded-circle mb-3" src="{{user.image}}" alt="User Profile Picture" style="width: 100px; height: 100px; object-fit: cover; border: 3px solid #4A734C;">
+    <h2 class="card-title text-primary">{{user.username}}</h2>
+    <h5 class="card-subtitle text-muted mb-3">{{user.email}}</h5>
+    {{#if profile}}
+      <a href="/products/new" class="btn btn-success w-100">Create a new listing</a>
+    {{/if}}
+  </div>
+</div>
+
     {{#if profile}}
       <h2>My listings</h2>
     {{else}}

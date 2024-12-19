@@ -64,3 +64,30 @@ exports.removeFromCart = async (req, res, next) => {
     next(error);
   }
 };
+
+
+exports.checkout = async (req, res, next) => {
+  try {
+    const userId = req.currentUser._id;
+    const cart = await Cart.findOne({ user: userId }).populate('products.product');
+
+    if (!cart || cart.products.length === 0) {
+      return res.redirect('/cart'); // Si el carrito está vacío, redirige
+    }
+
+    // Preparar datos del carrito para Stripe
+    const cartProducts = cart.products.map(item => ({
+      name: item.product.name,
+      price: item.product.price,
+      quantity: item.quantity,
+    }));
+
+    // Calcular total (opcional, se puede hacer en front o directamente en el back)
+    const total = cartProducts.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+
+    res.render('payment/checkout', { cartProducts, total });
+  } catch (error) {
+    next(error);
+  }
+};
+
